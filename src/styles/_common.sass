@@ -1,5 +1,9 @@
 $fontColor1: black
-
+$color: #dd0
+$color1: #101010
+$color2: #d00
+$bgColor: #ddd
+$bgColor1: #fff
 *
     margin: 0
     padding: 0
@@ -9,7 +13,11 @@ a
     color: $fontColor1
     &:hover
         color: $fontColor1
+        outline: none
 select,textarea,input
     resize: none
+    outline: none
+    &:focus
+        outline: none
 ul,li
     list-style: none

@@ -1,0 +1,29 @@
+@import '../_common.sass'
+
+.home-form
+    width: 800px
+    margin: 0 auto
+    label
+        display: block
+        padding-left: 120px
+        position: relative
+        text-align: left
+        text
+            position: absolute
+            left: 0
+            top: 0
+            width: 120px
+            display: block
+            white-space: nowrap
+            overflow: hidden
+            text-overflow: ellipsis
+        input,textarea
+            width: 200px
+            height: 30px
+            line-height: 30px
+            border: 1px solid $color1
+            &[type='submit']
+                width: 120px
+                &:hover
+                    background: $bgColor
+                    cursor: pointer
