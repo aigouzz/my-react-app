@@ -1,5 +1,12 @@
 let express = require('express')
 let app = express()
+let bodyParser = require('body-parser')
+
+app.use(bodyParser.urlencoded({
+    extended: false,
+}))
+
+app.use(bodyParser.json())
 
 app.all('*', (req, res, next) => {
     res.header('Access-Control-Allow-Origin', 'http://localhost:3000');
@@ -7,7 +14,7 @@ app.all('*', (req, res, next) => {
     res.header('Access-Control-Allow-Methods', 'PUT, GET, POST, OPTIONS, DELETE');
     res.header('Access-Control-Allow-Credentials', true);
     if(req.method.toLowerCase() === 'options') {
-        res.send(200);
+        res.sendStatus(200);
     } else {
         next();
     }
@@ -26,23 +33,27 @@ app.get('/home/search', (req, res) => {
     res.send(JSON.stringify(json))
 });
 app.post('/home/page', (req, res) => {
-    let result = [
-        {
-            id: 1001,
-            title: '体育',
-            href: '/sport'
-        },
-        {
-            id: 1002,
-            title: '新闻',
-            href: '/news'
-        },
-        {
-            id: 1003,
-            title: '时尚',
-            href: '/fashion'
-        },
-    ];
+    console.log(req.body)
+    let result = {
+        message: '请求homepage成功',
+        list: [
+            {
+                id: 1001,
+                title: '体育',
+                href: '/sport'
+            },
+            {
+                id: 1002,
+                title: '新闻',
+                href: '/news'
+            },
+            {
+                id: 1003,
+                title: '时尚',
+                href: '/fashion'
+            },
+        ],
+    };
     res.send(JSON.stringify(result));
 })
 

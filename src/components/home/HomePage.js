@@ -7,25 +7,27 @@ class HomePage extends React.Component{
         super(props);
         this.state = {
             list: []
-        }
+        };
+    }
+    componentDidMount() {
         postRequest(HomePageUrl, {page: 1}).then((data) => {
-            console.log(data)
             this.setState({
-                list: data.data
+                list: data.data.list
             });
         }, err => {
             console.log(err)
         });
     }
     render() {
+        let content = (<ul>
+            {this.state.list.map((element, index) => {
+              return <li key={element.id}>
+                <a href={element.href} target="_blank" rel="noreferrer">{element.title}</a>
+              </li>  
+            })}
+        </ul>);
         return (<div className="home-page">
-            <ul>
-                {this.state.list.map((element, index) => {
-                  return <li key={element.id}>
-                    <a href={element.href} target="_blank" rel="noreferrer">{element.title}</a>
-                  </li>  
-                })}
-            </ul>
+            {this.state.list.length ? content : ''}
         </div>)
     }
 }
