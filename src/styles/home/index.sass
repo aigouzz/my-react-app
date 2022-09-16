@@ -11,6 +11,7 @@ $bgColor1: #fff
         display: flex
         justify-content: flex-start
         text-align: left
+        position: relative
         .home-banner-left
             flex: 1
             img
@@ -22,7 +23,7 @@ $bgColor1: #fff
             line-height: 30px
             input
                 border: 1px solid $color
-                width: 120px
+                width: 160px
                 height: 30px
                 &:focus
                     outline: none
@@ -33,6 +34,20 @@ $bgColor1: #fff
                 border: 1px solid $bgColor
                 &:active
                     border: 1px solod $color1
+        .home-banner-drop
+            position: absolute
+            top: 32px
+            left: 50%
+            width: 160px
+            z-index: 10
+            border: 1px solid $color1
+            li
+                border-bottom: 1px solid $color1
+                &:nth-last-child(1)
+                    border-bottom: none
+                &:hover
+                    cursor: pointer
+                    background: $color
     .home-page
         ul
             display: flex

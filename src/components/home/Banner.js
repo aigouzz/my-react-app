@@ -7,7 +7,8 @@ class Banner extends React.Component {
     constructor(props) {
         super(props)
         this.state = {
-            value: 'default'
+            value: 'default',
+            list: []
         }
         this.change = this.change.bind(this);
         this.search = this.search.bind(this);
@@ -16,14 +17,28 @@ class Banner extends React.Component {
         const url = `/home/search?value=${this.state.value}`
         getRequest(url).then((data) => {
             console.log(data);
+            this.setState({
+                list: data.data.list
+            });
         })
     }
     change(e) {
         this.setState({
-            value: e.target.value
+            value: e.target.value,
+            list: []
         });
     }
+    goNextPage(e) {
+        let url = `/search/${e.target.url}`;
+        window.location.href = url;
+    }
     render() {
+        let dropdown = (<ul className='home-banner-drop'>
+                    {this.state.list.map((item, index) => {
+                        return (<li key={item.id} url={item.id} onClick={this.goNextPage}>{item.title}</li>);
+                    })
+                    }
+        </ul>);
         return (
             <div className='home-banner'>
                 <div className='home-banner-left'>
@@ -34,6 +49,7 @@ class Banner extends React.Component {
                     onChange={this.change} placeholder='请输入查询信息' />
                     <button onClick={this.search}>查询</button>
                 </div>
+                {this.state.list.length ? dropdown : ''}
             </div>
         )
     }

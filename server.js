@@ -1,6 +1,7 @@
 let express = require('express')
 let app = express()
 let bodyParser = require('body-parser')
+let _ = require('lodash')
 
 app.use(bodyParser.urlencoded({
     extended: false,
@@ -22,13 +23,33 @@ app.all('*', (req, res, next) => {
 
 app.get('/home/search', (req, res) => {
     console.log(req.query);
-    let json = {
-        status: 200,
-        message: '收到了，ok',
-        data: {
-            type: 'get',
-            name: 'success'
+    const resArray = [
+        {
+            id: 2001,
+            title: '你是一切-郑源'
+        },
+        {
+            id: 2002,
+            title: '爱上你-登录'
+        },
+        {
+            id: 2003,
+            title: '夜曲-周杰伦'
+        },
+        {
+            id: 2004,
+            title: '泡沫-邓紫棋'
+        },
+        {
+            id: 2005,
+            title: '冻结-林俊杰'
         }
+    ];
+    let random = Math.floor(Math.random() * resArray.length);
+    random = random === 0 ? 1 : random;
+    let json = {
+        message: '收到了，ok',
+        list: _.shuffle(resArray).slice(0, random)
     }
     res.send(JSON.stringify(json))
 });
