@@ -1,6 +1,6 @@
 import React from "react";
 
-class Tips extends React{
+class Tips extends React.Component{
     constructor(props) {
         super(props);
         this.close = this.close.bind(this)

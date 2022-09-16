@@ -1,5 +1,7 @@
 import * as React from 'react'
 import {getRequest} from '../../api/request'
+import Tips from '../common/Tips'
+import img from '@/logo192.png'
 
 class Banner extends React.Component {
     constructor(props) {
@@ -25,7 +27,7 @@ class Banner extends React.Component {
         return (
             <div className='home-banner'>
                 <div className='home-banner-left'>
-                    <img src='' alt='' />
+                    <img src={img} alt='' />
                 </div>
                 <div className='home-banner-right'>
                     <input type='text' value={this.state.value} 
