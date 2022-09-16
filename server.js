@@ -1,0 +1,35 @@
+let express = require('express')
+let app = express()
+
+app.all('*', (req, res, next) => {
+    res.header('Access-Control-Allow-Origin', 'http://localhost:3000');
+    res.header('Access-Control-Allow-Headers', 'content-type, with-credentials');
+    res.header('Access-Control-Allow-Methods', 'PUT, GET, POST, OPTIONS, DELETE');
+    res.header('Access-Control-Allow-Credentials', true);
+    if(req.method.toLowerCase() === 'options') {
+        res.send(200);
+    } else {
+        next();
+    }
+});
+
+app.get('/home/search', (req, res) => {
+    console.log(req.query);
+    let json = {
+        status: 200,
+        message: '收到了，ok',
+        data: {
+            type: 'get',
+            name: 'success'
+        }
+    }
+    res.send(JSON.stringify(json))
+})
+
+app.listen('3001', (err) => {
+    if(err) {
+        console.log(err)
+    } else {
+        console.log(`启动成功，地址:http://127.0.0.1:3001`)
+    }
+})
