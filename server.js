@@ -24,6 +24,26 @@ app.get('/home/search', (req, res) => {
         }
     }
     res.send(JSON.stringify(json))
+});
+app.post('/home/page', (req, res) => {
+    let result = [
+        {
+            id: 1001,
+            title: '体育',
+            href: '/sport'
+        },
+        {
+            id: 1002,
+            title: '新闻',
+            href: '/news'
+        },
+        {
+            id: 1003,
+            title: '时尚',
+            href: '/fashion'
+        },
+    ];
+    res.send(JSON.stringify(result));
 })
 
 app.listen('3001', (err) => {
