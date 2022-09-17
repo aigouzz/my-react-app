@@ -55,7 +55,6 @@ class Form extends React.Component{
         }
     }
     uploadChange(e) {
-        console.log(e.target.files)
         let file = e.target.files[0];
         if(!!file) {
             let reader = new FileReader();
