@@ -15,7 +15,6 @@ function FooterRight() {
     return (
         <FooterContext.Consumer>
             {({right, links}) => {
-                console.log(right, links)
                 return (<div className="home-footer-right">
                     <div className="home-footer-r-t">文档</div>
                     <ul>
