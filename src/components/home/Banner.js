@@ -13,10 +13,10 @@ class Banner extends React.Component {
         this.change = this.change.bind(this);
         this.search = this.search.bind(this);
     }
-    search() {
+    search(e) {
+        e.stopPropagation();
         const data = {value: this.state.value};
         GetHomeSearch(data).then((data) => {
-            console.log(data);
             this.setState({
                 list: data.data.list
             });
@@ -25,8 +25,18 @@ class Banner extends React.Component {
     change(e) {
         this.setState({
             value: e.target.value,
+        });
+    }
+    hidedDrop = ()=> {
+        this.setState({
             list: []
         });
+    }
+    componentDidMount() {
+        window.addEventListener('click', this.hidedDrop);
+    }
+    componentWillUnmount() {
+        window.removeEventListener('click', this.hidedDrop)
     }
     render() {
         let dropdown = (<ul className='home-banner-drop'>
