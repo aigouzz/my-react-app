@@ -4,15 +4,15 @@ import {handleChange} from '../../util/index'
 class Input extends React.Component{
     constructor(props) {
         super(props);
-        this.state = {
-            value: '',
-        };
-        this.handleChange = this.handleChange.bind(this);
+        this.handleChange = handleChange.bind(this);
     }
     handleChange
     render() {
         return (
-            <input type='text' value={this.state.value} onChange={this.handleChange} />
+            <label>
+                <span>{this.props.list.title}</span>
+                <input name={this.props.list.name} type='text' value={this.props.list.value} onChange={this.handleChange} />
+            </label>
         );
     }
 }

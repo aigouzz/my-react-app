@@ -4,15 +4,15 @@ import {handleChange} from '../../util/index'
 class Textarea extends React.Component{
     constructor(props) {
         super(props);
-        this.state = {
-            value: '',
-        };
-        this.handleChange = this.handleChange.bind(this);
+        this.handleChange = handleChange.bind(this);
     }
     handleChange
     render() {
         return (
-            <textarea value={this.state.value} onChange={this.handleChange} ></textarea>
+            <label>
+                <span>{this.props.list.title}</span>
+                <textarea name={this.props.list.name} value={this.props.list.value} onChange={this.handleChange} ></textarea>
+            </label>
         );
     }
 }

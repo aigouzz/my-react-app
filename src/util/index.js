@@ -2,8 +2,10 @@ export function handleChange(e) {
     let tag = e.target;
     let value = tag.type === 'checkbox' ? tag.checked : tag.value;
     let name = tag.name;
-    this.setState({
-        [name]: value,
+    this.props.onChange({
+        name,
+        value,
+        title: this.props.list.title
     });
 }
 
@@ -17,4 +19,13 @@ export function extractObject(obj) {
         }
     }
     return res;
+}
+
+export function checkForm(data) {
+    let reg1 = /^\w+$/g;
+    if(data.user.value.match(reg1) && data.opinion.value.match(reg1) && data.isCheck.value) {
+        return true;
+    } else {
+        return false;
+    }
 }

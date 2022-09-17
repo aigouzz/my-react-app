@@ -4,15 +4,16 @@ import {handleChange} from '../../util/index'
 class Checkbox extends React.Component{
     constructor(props) {
         super(props);
-        this.state = {
-            value: '',
-        };
-        this.handleChange = this.handleChange.bind(this);
+        this.handleChange = handleChange.bind(this);
     }
     handleChange
     render() {
         return (
-            <input type='checkbox' value={this.state.value} onChange={this.handleChange} />
+            <label>
+                <span>{this.props.list.title}</span>
+                <input name={this.props.list.name} type='checkbox' value={this.props.list.value} onChange={this.handleChange} />
+                <font>接受条款</font>
+            </label>
         );
     }
 }

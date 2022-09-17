@@ -1,21 +1,60 @@
 import React from "react";
-import { handleChange } from '../../util/index'
+import Input from './Input'
+import Checkbox from './Checkbox'
+import Textarea from "./Textarea";
+import { handleChange, checkForm} from '../../util/index'
 
 class Form extends React.Component{
     constructor(props) {
         super(props);
         this.state = {
-            name: '',
-            opinion: '',
-            uploadImage: ''
+            user: {
+                title: '姓名',
+                value: '',
+                name: 'username'
+            },
+            opinion: {
+                title: '感想',
+                value: '',
+                name: 'opinion'
+            },
+            isCheck: {
+                title: '接受',
+                value: false,
+                name: 'accept'
+            },
         }
         this.handleChange = handleChange.bind(this);
         this.submit = this.submit.bind(this);
         this.uploadChange = this.uploadChange.bind(this);
+        this.onUserChange = this.onUserChange.bind(this);
+        this.onOpinionChange = this.onOpinionChange.bind(this);
+        this.onCheckChange = this.onCheckChange.bind(this);
+    }
+    onUserChange(data) {
+        console.log(data)
+        this.setState({
+            user: data
+        });
+    }
+    onOpinionChange(data) {
+        this.setState({
+            opinion: data
+        });
+    }
+    onCheckChange(data) {
+        this.setState({
+            isCheck: data
+        });
     }
     submit(e) {
         e.preventDefault();
-        console.log(this.state.name, this.state.opinion);
+        console.log(this.state);
+        if(checkForm(this.state)) {
+            alert('成功');
+        } else {
+            alert('填写错误，请查看失误')
+        }
     }
     uploadChange(e) {
         console.log(e.target.files)
@@ -37,20 +76,14 @@ class Form extends React.Component{
     render() {
         return (
             <form className="home-form" onSubmit={this.submit}>
+                <Input list={this.state.user} onChange={this.onUserChange}></Input>
+                <Textarea list={this.state.opinion} onChange={this.onOpinionChange}></Textarea>
+                <Checkbox list={this.state.isCheck} onChange={this.onCheckChange}></Checkbox>
                 <label>
-                    <text>姓名：</text>
-                    <input type='text' name='name' value={this.state.name} 
-                    onChange={this.handleChange} placeholder='请输入您的姓名'/>    
-                </label>
-                <label>
-                    <text>感想：</text>
-                    <textarea name='opinion' value={this.state.opinion}
-                    onChange={this.handleChange} placeholder='请输入感想'></textarea>
-                </label>
-                <label>
-                    <text>上传：</text>
+                    <span>上传：</span>
                     {this.state.uploadImage ? <img src={this.state.uploadImage} alt='上传的图片'/> : ''}
-                    <input type='file' onChange={this.uploadChange} multiple='multiple' />
+                    <button class='home-form-uploadbg'>点击上传</button>
+                    <input class='home-form-upload' type='file' onChange={this.uploadChange} multiple='multiple' />
                     <button onClick={this.upload}>上传</button>
                 </label>
                 <label>
