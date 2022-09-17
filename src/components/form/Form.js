@@ -6,10 +6,12 @@ class Form extends React.Component{
         super(props);
         this.state = {
             name: '',
-            opinion: ''
+            opinion: '',
+            uploadImage: ''
         }
         this.handleChange = handleChange.bind(this);
         this.submit = this.submit.bind(this);
+        this.uploadChange = this.uploadChange.bind(this);
     }
     submit(e) {
         e.preventDefault();
@@ -17,6 +19,17 @@ class Form extends React.Component{
     }
     uploadChange(e) {
         console.log(e.target.files)
+        let file = e.target.files[0];
+        if(!!file) {
+            let reader = new FileReader();
+            reader.readAsDataURL(file, 'utf-8');
+            reader.onload = () => {
+                console.log(reader.result)
+                this.setState({
+                    uploadImage: reader.result
+                })
+            }
+        }
     }
     upload() {
 
@@ -36,7 +49,8 @@ class Form extends React.Component{
                 </label>
                 <label>
                     <text>上传：</text>
-                    <input type='file' onChange={this.uploadChange} multiple={true} />
+                    {this.state.uploadImage ? <img src={this.state.uploadImage} alt='上传的图片'/> : ''}
+                    <input type='file' onChange={this.uploadChange} multiple='multiple' />
                     <button onClick={this.upload}>上传</button>
                 </label>
                 <label>
