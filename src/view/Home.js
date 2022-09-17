@@ -12,8 +12,7 @@ class Home extends React.Component {
             <Banner></Banner>
             <React.Suspense fallback={<div>...loading</div>}>
                 <HomePage></HomePage>
-            </React.Suspense>
-            
+            </React.Suspense> 
             <HomeMiddle></HomeMiddle>
             <Form></Form>
         </div>

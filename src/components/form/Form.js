@@ -1,7 +1,7 @@
-import React from "react";
+import React from 'react'
 import Input from './Input'
 import Checkbox from './Checkbox'
-import Textarea from "./Textarea";
+import Textarea from './Textarea'
 import { handleChange, checkForm} from '../../util/index'
 
 class Form extends React.Component{

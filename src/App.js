@@ -1,16 +1,19 @@
 import React from 'react'
 import Home from './view/Home'
-import {FormContext} from './context/index'
+import Footer from './view/Footer'
+import {FooterContext} from './context/index'
+import {FooterData} from './api/defaultData'
 
 function App() {
   return (
-    <FormContext.Provider>
+    <FooterContext.Provider value={FooterData}>
       <div className="App">
         <div className='App-home'>
           <Home></Home>
+          <Footer></Footer>
         </div>
     </div>
-    </FormContext.Provider>
+    </FooterContext.Provider>
   );
 }
 
