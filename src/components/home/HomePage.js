@@ -1,6 +1,5 @@
 import React from "react"
-import { postRequest } from '../../api/request'
-import { HomePageUrl } from '../../api/url'
+import { PostHomePage } from '../../api/url'
 
 class HomePage extends React.Component{
     constructor(props) {
@@ -10,7 +9,7 @@ class HomePage extends React.Component{
         };
     }
     componentDidMount() {
-        postRequest(HomePageUrl, {page: 1}).then((data) => {
+        PostHomePage({page: 1}).then((data) => {
             this.setState({
                 list: data.data.list
             });

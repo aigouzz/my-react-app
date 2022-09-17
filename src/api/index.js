@@ -1,5 +1,8 @@
 import Axios from 'axios'
-import {baseURL} from './url.js'
+
+
+const baseURL = process.env.NODE_ENV === 'production' ? 
+'http://127.0.0.1:3002' : 'http://127.0.0.1:3001';
 
 let axios = Axios.create({
     baseURL,

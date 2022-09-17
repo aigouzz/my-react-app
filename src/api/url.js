@@ -1,12 +1,27 @@
-const baseURL = process.env.NODE_ENV === 'production' ? 
-'http://127.0.0.1:3002' : 'http://127.0.0.1:3001';
+import { getRequest, postRequest } from "./request";
+import { extractObject } from "../util";
 
-const HomePageUrl = '/home/page';
+const PostHomePage = (data) => {
+    return new Promise((resolve, reject) => {
+        postRequest('/home/page', data).then(resolve, reject);
+    });
+};
 
-const FormPageUrl = '/home/form';
+const GetHomeSearch = (data) => {
+    let url = '/home/search?' + extractObject(data);
+    return new Promise((resolve, reject) => {
+        getRequest(url).then(resolve, reject);
+    });
+}
+
+const PostFormUpload = (data) => {
+    return new Promise((resolve, reject) => {
+        postRequest('/home/form/upload', data).then(resolve, reject);
+    });
+}
 
 export {
-    baseURL,
-    HomePageUrl,
-    FormPageUrl,
+    PostHomePage,
+    GetHomeSearch,
+    PostFormUpload,
 }

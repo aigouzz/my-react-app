@@ -15,6 +15,12 @@ class Form extends React.Component{
         e.preventDefault();
         console.log(this.state.name, this.state.opinion);
     }
+    uploadChange(e) {
+        console.log(e.target.files)
+    }
+    upload() {
+
+    }
     render() {
         return (
             <form className="home-form" onSubmit={this.submit}>
@@ -27,6 +33,11 @@ class Form extends React.Component{
                     <text>感想：</text>
                     <textarea name='opinion' value={this.state.opinion}
                     onChange={this.handleChange} placeholder='请输入感想'></textarea>
+                </label>
+                <label>
+                    <text>上传：</text>
+                    <input type='file' onChange={this.uploadChange} multiple={true} />
+                    <button onClick={this.upload}>上传</button>
                 </label>
                 <label>
                     <input type='submit' value='提交'/>

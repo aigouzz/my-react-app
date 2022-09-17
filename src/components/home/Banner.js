@@ -1,5 +1,5 @@
 import * as React from 'react'
-import {getRequest} from '../../api/request'
+import {GetHomeSearch} from '../../api/url'
 import Tips from '../common/Tips'
 import img from '@/logo192.png'
 
@@ -14,8 +14,8 @@ class Banner extends React.Component {
         this.search = this.search.bind(this);
     }
     search() {
-        const url = `/home/search?value=${this.state.value}`
-        getRequest(url).then((data) => {
+        const data = {value: this.state.value};
+        GetHomeSearch(data).then((data) => {
             console.log(data);
             this.setState({
                 list: data.data.list

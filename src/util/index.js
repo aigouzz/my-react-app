@@ -6,3 +6,15 @@ export function handleChange(e) {
         [name]: value,
     });
 }
+
+export function extractObject(obj) {
+    let res = '';
+    for(let i in obj) {
+        if(res) {
+            res += `&${i}=${obj[i]}`;
+        } else {
+            res = `${i}=${obj[i]}`;
+        }
+    }
+    return res;
+}
