@@ -28,14 +28,14 @@ class Banner extends React.Component {
             list: []
         });
     }
-    goNextPage(e) {
-        let url = `/search/${e.target.url}`;
-        window.location.href = url;
-    }
     render() {
         let dropdown = (<ul className='home-banner-drop'>
                     {this.state.list.map((item, index) => {
-                        return (<li key={item.id} url={item.id} onClick={this.goNextPage}>{item.title}</li>);
+                        return (<li key={item.id}>
+                            <a href={`/search/${item.id}`} target='_blank' rel='noreferrer'>
+                            {item.title}
+                            </a>
+                            </li>);
                     })
                     }
         </ul>);
