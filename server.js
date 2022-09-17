@@ -2,6 +2,7 @@ let express = require('express')
 let app = express()
 let bodyParser = require('body-parser')
 let _ = require('lodash')
+let port = process.env.NODE_ENV === 'production' ? 3002 : 3001
 
 app.use(bodyParser.urlencoded({
     extended: false,
@@ -78,10 +79,10 @@ app.post('/home/page', (req, res) => {
     res.send(JSON.stringify(result));
 })
 
-app.listen('3001', (err) => {
+app.listen(port, (err) => {
     if(err) {
         console.log(err)
     } else {
-        console.log(`启动成功，地址:http://127.0.0.1:3001`)
+        console.log(`启动成功，地址:http://127.0.0.1:${port}`)
     }
 })

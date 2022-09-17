@@ -25,6 +25,7 @@ const ForkTsCheckerWebpackPlugin =
     ? require('react-dev-utils/ForkTsCheckerWarningWebpackPlugin')
     : require('react-dev-utils/ForkTsCheckerWebpackPlugin');
 const ReactRefreshWebpackPlugin = require('@pmmmwh/react-refresh-webpack-plugin');
+const WebpackBundleAnalyzer = require('webpack-bundle-analyzer').BundleAnalyzerPlugin;
 
 const createEnvironmentHash = require('./webpack/persistentCache/createEnvironmentHash');
 
@@ -748,6 +749,7 @@ module.exports = function (webpackEnv) {
             },
           },
         }),
+      isEnvProduction && new WebpackBundleAnalyzer(),
     ].filter(Boolean),
     // Turn off performance processing because we utilize
     // our own hints via the FileSizeReporter

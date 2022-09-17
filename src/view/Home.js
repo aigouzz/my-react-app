@@ -1,8 +1,8 @@
 import * as React from 'react'
 import Banner from '../components/home/Banner'
 import HomeMiddle from '../components/home/HomeMiddle'
-import HomePage from '../components/home/HomePage'
 import Form from '../components/form/Form'
+const HomePage = React.lazy(() => import('../components/home/HomePage'))
 
 
 class Home extends React.Component {
@@ -10,7 +10,10 @@ class Home extends React.Component {
         return (    
         <div className='home-container'>
             <Banner></Banner>
-            <HomePage></HomePage>
+            <React.Suspense fallback={<div>...loading</div>}>
+                <HomePage></HomePage>
+            </React.Suspense>
+            
             <HomeMiddle></HomeMiddle>
             <Form></Form>
         </div>

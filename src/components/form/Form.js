@@ -32,7 +32,6 @@ class Form extends React.Component{
         this.onCheckChange = this.onCheckChange.bind(this);
     }
     onUserChange(data) {
-        console.log(data)
         this.setState({
             user: data
         });
@@ -49,7 +48,6 @@ class Form extends React.Component{
     }
     submit(e) {
         e.preventDefault();
-        console.log(this.state);
         if(checkForm(this.state)) {
             alert('成功');
         } else {
@@ -82,8 +80,8 @@ class Form extends React.Component{
                 <label>
                     <span>上传：</span>
                     {this.state.uploadImage ? <img src={this.state.uploadImage} alt='上传的图片'/> : ''}
-                    <button class='home-form-uploadbg'>点击上传</button>
-                    <input class='home-form-upload' type='file' onChange={this.uploadChange} multiple='multiple' />
+                    <button className='home-form-uploadbg'>点击上传</button>
+                    <input className='home-form-upload' type='file' onChange={this.uploadChange} multiple='multiple' />
                     <button onClick={this.upload}>上传</button>
                 </label>
                 <label>
