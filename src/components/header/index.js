@@ -58,9 +58,9 @@ class Header extends React.Component {
                     <input type='text' value={this.state.value} 
                     onChange={this.change} placeholder='请输入查询信息' />
                     <button onClick={this.search}>查询</button>
+                    {this.state.list.length ? dropdown : ''}
                 </div>
                 <HeaderLogin></HeaderLogin>
-                {this.state.list.length ? dropdown : ''}
             </div>
         )
     }

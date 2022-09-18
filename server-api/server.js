@@ -61,18 +61,23 @@ app.post('/home/page', (req, res) => {
         list: [
             {
                 id: 1001,
-                title: '体育',
-                href: '/sport'
+                title: '首页',
+                href: '/home'
             },
             {
                 id: 1002,
-                title: '新闻',
-                href: '/news'
+                title: '列表',
+                href: '/form'
             },
             {
                 id: 1003,
-                title: '时尚',
-                href: '/fashion'
+                title: '关于',
+                href: '/about'
+            },
+            {
+                id: 1004,
+                title: '登陆',
+                href: '/login'
             },
         ],
     };

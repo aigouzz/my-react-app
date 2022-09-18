@@ -1,20 +1,20 @@
-import React from "react";
+import React from "react"
+import { createPortal } from "react-dom";
 
 class Tips extends React.Component{
     constructor(props) {
         super(props);
-        this.close = this.close.bind(this)
+        this.div = document.createElement('div');
     }
-    close() {
-
+    componentDidMount() {
+        document.body.appendChild(this.div);
+    }
+    componentWillUnmount() {
+        document.body.removeChild(this.div);
+        this.div = null;
     }
     render() {
-        return (
-            <div className="tips">
-                <div className="tips-text">{this.props.text}</div>
-                <div className="tips-close" onClick={this.close}>x</div>   
-            </div>
-        );
+        return createPortal(this.props.children, this.div);
     }
 }
 

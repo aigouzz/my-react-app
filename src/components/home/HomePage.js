@@ -1,5 +1,6 @@
 import React from "react"
 import { PostHomePage } from '../../api/url'
+import {Link} from 'react-router-dom'
 
 class HomePage extends React.Component{
     constructor(props) {
@@ -21,7 +22,7 @@ class HomePage extends React.Component{
         let content = (<ul>
             {this.state.list.map((element, index) => {
               return <li key={element.id}>
-                <a href={element.href} target="_blank" rel="noreferrer">{element.title}</a>
+                <Link to={element.href}>{element.title}</Link>
               </li>  
             })}
         </ul>);
