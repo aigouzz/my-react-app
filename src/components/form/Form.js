@@ -11,7 +11,7 @@ class Form extends React.Component{
             user: {
                 title: '姓名',
                 value: '',
-                name: 'username'
+                name: 'user'
             },
             opinion: {
                 title: '感想',
@@ -21,29 +21,17 @@ class Form extends React.Component{
             isCheck: {
                 title: '接受',
                 value: false,
-                name: 'accept'
+                name: 'isCheck'
             },
         }
         this.handleChange = handleChange.bind(this);
         this.submit = this.submit.bind(this);
         this.uploadChange = this.uploadChange.bind(this);
-        this.onUserChange = this.onUserChange.bind(this);
-        this.onOpinionChange = this.onOpinionChange.bind(this);
-        this.onCheckChange = this.onCheckChange.bind(this);
+        this.onValueChange = this.onValueChange.bind(this);
     }
-    onUserChange(data) {
+    onValueChange(data) {
         this.setState({
-            user: data
-        });
-    }
-    onOpinionChange(data) {
-        this.setState({
-            opinion: data
-        });
-    }
-    onCheckChange(data) {
-        this.setState({
-            isCheck: data
+            [data.name]: data
         });
     }
     submit(e) {
@@ -73,9 +61,9 @@ class Form extends React.Component{
     render() {
         return (
             <form className="home-form" onSubmit={this.submit}>
-                <Input list={this.state.user} onChange={this.onUserChange}></Input>
-                <Textarea list={this.state.opinion} onChange={this.onOpinionChange}></Textarea>
-                <Checkbox list={this.state.isCheck} onChange={this.onCheckChange}></Checkbox>
+                <Input list={this.state.user} onChange={this.onValueChange}></Input>
+                <Textarea list={this.state.opinion} onChange={this.onValueChange}></Textarea>
+                <Checkbox list={this.state.isCheck} onChange={this.onValueChange}></Checkbox>
                 <label>
                     <span>上传：</span>
                     {this.state.uploadImage ? <img src={this.state.uploadImage} alt='上传的图片'/> : ''}
