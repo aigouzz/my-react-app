@@ -55,7 +55,7 @@ app.get('/home/search', (req, res) => {
     res.send(JSON.stringify(json))
 });
 app.post('/home/page', (req, res) => {
-    console.log(req.body)
+    console.log(req.body);
     let result = {
         message: '请求homepage成功',
         list: [
