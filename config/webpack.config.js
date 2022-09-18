@@ -323,6 +323,7 @@ module.exports = function (webpackEnv) {
         }),
         ...(modules.webpackAliases || {}),
         '@': path.resolve(__dirname, '../src/assets'),
+        '@src': path.resolve(__dirname, '../src')
       },
       plugins: [
         // Prevents users from importing files from outside of src/ (or node_modules/).

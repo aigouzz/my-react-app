@@ -1,9 +1,9 @@
 import * as React from 'react'
 import {GetHomeSearch} from '../../api/url'
-import Tips from '../common/Tips'
 import img from '@/logo192.png'
+import HeaderLogin from './login'
 
-class Banner extends React.Component {
+class Header extends React.Component {
     constructor(props) {
         super(props)
         this.state = {
@@ -39,7 +39,7 @@ class Banner extends React.Component {
         window.removeEventListener('click', this.hidedDrop)
     }
     render() {
-        let dropdown = (<ul className='home-banner-drop'>
+        let dropdown = (<ul className='header-banner-drop'>
                     {this.state.list.map((item, index) => {
                         return (<li key={item.id}>
                             <a href={`/search/${item.id}`} target='_blank' rel='noreferrer'>
@@ -50,15 +50,16 @@ class Banner extends React.Component {
                     }
         </ul>);
         return (
-            <div className='home-banner'>
-                <div className='home-banner-left'>
+            <div className='header-banner'>
+                <div className='header-banner-left'>
                     <img src={img} alt='' />
                 </div>
-                <div className='home-banner-right'>
+                <div className='header-banner-right'>
                     <input type='text' value={this.state.value} 
                     onChange={this.change} placeholder='请输入查询信息' />
                     <button onClick={this.search}>查询</button>
                 </div>
+                <HeaderLogin></HeaderLogin>
                 {this.state.list.length ? dropdown : ''}
             </div>
         )
@@ -66,4 +67,4 @@ class Banner extends React.Component {
 }
 
 
-export default Banner;
+export default Header;
