@@ -40,3 +40,13 @@ export function checkLogin(data) {
         return false;
     }
 }
+
+export function debounce(fn, wait=600) {
+    let timer = null;
+    return function() {
+        if(timer) clearTimeout(timer);
+        timer = setTimeout(() => {
+            fn(...arguments);
+        }, wait);
+    }
+}

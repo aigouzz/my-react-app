@@ -5,8 +5,8 @@ class Textarea extends React.Component{
     constructor(props) {
         super(props);
         this.handleChange = handleChange.bind(this);
+        // console.log(this.findDOMNode())
     }
-    handleChange
     render() {
         return (
             <label>
