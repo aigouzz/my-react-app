@@ -46,7 +46,29 @@ export function debounce(fn, wait=600) {
     return function() {
         if(timer) clearTimeout(timer);
         timer = setTimeout(() => {
-            fn(...arguments);
+            fn.aaply(this, arguments);
         }, wait);
+    }
+}
+
+export function throttle(fn, wait=600) {
+    let last = +new Date();
+    console.log('throttle')
+    // let timer = null;
+    return function(...args) {
+        let now = +new Date();
+        let times = now - last;
+        console.log(last, now)
+        if(times > wait) {
+            last = now;
+            fn.apply(this, args);
+        }
+        // if(!timer) {
+        //     timer = setTimeout(() => {
+        //         fn.apply(this, args);
+        //         timer = null;
+        //     }, wait);
+        // }
+        // return false;
     }
 }

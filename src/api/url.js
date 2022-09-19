@@ -18,9 +18,14 @@ const PostLogin = (data) => {
     return postRequest('/login', data);
 }
 
+const PostImageUpload = (data) => {
+    return postRequest('/upload', data);
+}
+
 export {
     PostHomePage,
     GetHomeSearch,
     PostFormUpload,
     PostLogin,
+    PostImageUpload,
 }

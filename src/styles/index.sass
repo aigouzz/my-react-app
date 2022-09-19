@@ -3,6 +3,7 @@
 @import url('./form/index.sass')
 @import url('./login/index.sass')
 @import url('./footer/index.sass')
+@import './_common.sass'
 
 body 
   margin: 0
@@ -32,6 +33,35 @@ code
 
 .App-link 
   color: #61dafb
+
+.modal-tips
+    position: fixed
+    top: 100px
+    left: 50%
+    max-width: 240px
+    padding: 0 50px 0 10px
+    font-size: 16px
+    height: 40px
+    line-height: 40px
+    transform: translate(-50%, 0)
+    z-index: 1000
+    background: $color
+    border: 1px solid $bgColor
+    color: $color1
+    text-align: center
+    .modal-tips-text
+      white-space: nowrap
+      overflow: hidden
+      text-overflow: ellipsis
+    i
+      position: absolute
+      top: 0
+      right: 0
+      width: 40px
+      display: block
+      cursor: pointer
+
+
 
 
 

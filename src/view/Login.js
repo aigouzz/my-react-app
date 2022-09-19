@@ -36,6 +36,9 @@ function Login(props) {
             alert('输入有误，请重新输入');
         }
     }
+    if(localStorage.getItem('username')) {
+        navigate('/home');
+    }
     return (
         <>
         <Header></Header>

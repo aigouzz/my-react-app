@@ -6,9 +6,12 @@ let port = process.env.NODE_ENV === 'production' ? 3002 : 3001
 
 app.use(bodyParser.urlencoded({
     extended: false,
+    limit: '10mb'
 }))
 
-app.use(bodyParser.json())
+app.use(bodyParser.json({
+    limit: '10mb'
+}))
 
 app.all('*', (req, res, next) => {
     res.header('Access-Control-Allow-Origin', 'http://localhost:3000');
@@ -49,7 +52,7 @@ app.get('/home/search', (req, res) => {
     let random = Math.floor(Math.random() * resArray.length);
     random = random === 0 ? 1 : random;
     let json = {
-        message: '收到了，ok',
+        message: 'home/search成功',
         list: _.shuffle(resArray).slice(0, random)
     }
     res.send(JSON.stringify(json))
@@ -82,7 +85,26 @@ app.post('/home/page', (req, res) => {
         ],
     };
     res.send(JSON.stringify(result));
-})
+});
+
+app.post('/upload', (req, res) => {
+    console.log((req.body.image.length / 1024).toFixed(2) + 'kb');
+    const result = {
+        message: '上传成功',
+        status: 200,
+        url: ''
+    };
+    res.send(JSON.stringify(result));
+});
+
+app.post('/home/form/upload', (req, res) => {
+    console.log(req.body);
+    const result = {
+        message: 'form/upload提交成功',
+        status: 200,
+    };
+    res.send(JSON.stringify(result));
+});
 
 app.listen(port, (err) => {
     if(err) {

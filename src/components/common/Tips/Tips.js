@@ -1,10 +1,11 @@
 import React from "react"
 import { createPortal } from "react-dom";
 
-class Tips extends React.Component{
+class Modal extends React.Component{
     constructor(props) {
         super(props);
         this.div = document.createElement('div');
+        this.div.className = 'modal-tips';
     }
     componentDidMount() {
         document.body.appendChild(this.div);
@@ -18,4 +19,4 @@ class Tips extends React.Component{
     }
 }
 
-export default Tips;
+export default Modal;
