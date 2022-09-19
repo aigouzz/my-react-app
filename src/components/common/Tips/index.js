@@ -6,17 +6,20 @@ class Tips extends React.Component {
         super(props);
         this.TipsRef = createRef();
         this.state = {
-            isShow: false
+            isShow: false,
+            title: ''
         };
     }
-    show = () => {
+    show = (title) => {
         this.setState({
-            isShow: true
+            isShow: true,
+            title,
         });
     }
     hide= () => {
         this.setState({
-            isShow: false
+            isShow: false,
+            title: ''
         });
     }
     render() {
@@ -24,7 +27,7 @@ class Tips extends React.Component {
             <>
             {this.state.isShow ? (
                 <Modal ref={this.TipsRef}>
-                    <div className='modal-tips-text'>{this.props.title}</div>
+                    <div className='modal-tips-text'>{this.state.title}</div>
                     <i onClick={this.onClose}>x</i>
                 </Modal>
             ) : ''}

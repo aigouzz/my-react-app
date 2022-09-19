@@ -15,8 +15,8 @@ class Home extends React.Component {
                     <HomePage></HomePage>
                 </React.Suspense> 
                 <HomeMiddle></HomeMiddle>
-            <Form></Form>
-        </div>
+                <Form></Form>
+            </div>
             </>
         )
     }

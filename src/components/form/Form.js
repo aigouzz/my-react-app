@@ -25,7 +25,6 @@ class Form extends React.Component{
                 value: false,
                 name: 'isCheck'
             },
-            title: ''
         }
         this.TipsRef = createRef();
         this.handleChange = handleChange.bind(this);
@@ -58,10 +57,7 @@ class Form extends React.Component{
         }
     }
     onShow(title) {
-        this.setState({
-            title,
-        });
-        this.TipsRef.current.show();
+        this.TipsRef.current.show(title);
         setTimeout(() => {
             this.onClose();
         }, 1000);
@@ -120,7 +116,7 @@ class Form extends React.Component{
                     <button className='submit' onClick={this.submitWrap}>提交</button>
                 </label>
             </div>
-            <Tips title={this.state.title} ref={this.TipsRef}></Tips>
+            <Tips ref={this.TipsRef}></Tips>
             </>
         );
     }

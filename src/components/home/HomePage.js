@@ -18,6 +18,9 @@ class HomePage extends React.Component{
             console.log(err)
         });
     }
+    componentDidUpdate() {
+        console.log('home page update')
+    }
     render() {
         let content = (<ul>
             {this.state.list.map((element, index) => {
