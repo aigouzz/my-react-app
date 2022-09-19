@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { createRef } from 'react'
 import Input from './Input'
 import Checkbox from './Checkbox'
 import Textarea from './Textarea'
@@ -27,6 +27,7 @@ class Form extends React.Component{
             },
             title: ''
         }
+        this.TipsRef = createRef();
         this.handleChange = handleChange.bind(this);
         this.submitWrap = this.submitWrap.bind(this);
         this.uploadChange = this.uploadChange.bind(this);
@@ -60,16 +61,13 @@ class Form extends React.Component{
         this.setState({
             title,
         });
+        this.TipsRef.current.show();
         setTimeout(() => {
-            if(this.state.title) {
-                this.onClose();
-            }
+            this.onClose();
         }, 1000);
     }
     onClose = () => {
-        this.setState({
-            title: ''
-        });
+        this.TipsRef.current.hide();
     }
     uploadChange(e) {
         let file = e.target.files[0];
@@ -122,7 +120,7 @@ class Form extends React.Component{
                     <button className='submit' onClick={this.submitWrap}>提交</button>
                 </label>
             </div>
-            <Tips title={this.state.title} onClose={this.onClose}></Tips>
+            <Tips title={this.state.title} ref={this.TipsRef}></Tips>
             </>
         );
     }
