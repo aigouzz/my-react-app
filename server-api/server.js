@@ -47,7 +47,11 @@ app.get('/home/search', (req, res) => {
         {
             id: 2005,
             title: '冻结-林俊杰'
-        }
+        },
+        {
+            id: 2006, 
+            title: '太迟-二虎'
+        },
     ];
     let random = Math.floor(Math.random() * resArray.length);
     random = random === 0 ? 1 : random;

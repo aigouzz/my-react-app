@@ -53,12 +53,10 @@ export function debounce(fn, wait=600) {
 
 export function throttle(fn, wait=600) {
     let last = +new Date();
-    console.log('throttle')
     // let timer = null;
     return function(...args) {
         let now = +new Date();
         let times = now - last;
-        console.log(last, now)
         if(times > wait) {
             last = now;
             fn.apply(this, args);
