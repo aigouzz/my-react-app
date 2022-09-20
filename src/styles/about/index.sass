@@ -1,0 +1,62 @@
+@import '../_common.sass'
+
+.home-about
+    display: flex
+    max-width: 1260px
+    margin: 0 auto
+    padding: 10px 0
+    .about-left
+        flex: 4
+        margin-right: 10px
+        background: $about_left_bg
+        ul
+            li
+                width: 33.3%
+                float: left
+                box-sizing: border-box
+                border-right: 1px solid $bgColor1
+                border-bottom: 1px solid $bgColor1
+                height: 85px
+                padding: 10px 0 10px 0
+                &:nth-child(3n)
+                    border-right: none
+                &:nth-child(4),&:nth-child(5),&:nth-child(6)
+                    border-bottom: none
+                a
+                    disply: block
+                    text-align: center
+                    img
+                        width: 24px
+                        height: 24px
+                        margin-bottom: 5px
+                        display: inline-block
+                    span
+                        display: block
+                        color: $bgColor1
+                        font-size: 14px
+
+    .about-right
+        flex: 16
+        ul
+            li
+                float: left
+                width: 33.3%
+                padding:0 9px
+                height: 170px
+                box-sizing: border-box
+                a
+                    display: block
+                    img
+                        display: block
+                        width: 100%
+                        height: 170px
+.about-mid
+    display: flex
+    > span    
+        flex: 1
+        display: inline-block
+        color: $about_middle_text
+        word-break: break-word
+        word-wrap: break
+    label
+        flex: 4

@@ -7,7 +7,6 @@ class Input extends React.Component {
         this.handleChange = handleChange.bind(this);
     }
 
-    handleChange
     render () {
         return (
             <label>
