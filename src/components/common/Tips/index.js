@@ -26,7 +26,7 @@ class Tips extends React.Component {
         return (
             <>
             {this.state.isShow ? (
-                <Modal ref={this.TipsRef}>
+                <Modal>
                     <div className='modal-tips-text'>{this.state.title}</div>
                     <i onClick={this.onClose}>x</i>
                 </Modal>
