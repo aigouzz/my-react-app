@@ -52,7 +52,7 @@ export function debounce (fn, wait = 600) {
 }
 
 export function throttle (fn, wait = 600) {
-    let last = +new Date();
+    let last = 0;
     // let timer = null;
     return function (...args) {
         let now = +new Date();
