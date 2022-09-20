@@ -31,7 +31,7 @@ class Tips extends React.Component {
             {this.state.isShow ? (
                 <Modal>
                     <div className='modal-tips-text'>{this.state.title}</div>
-                    <i onClick={this.onClose}>x</i>
+                    <i onClick={this.hide}>x</i>
                 </Modal>
             ) : ''}
             </>

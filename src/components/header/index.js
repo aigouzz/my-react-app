@@ -1,4 +1,5 @@
 import * as React from 'react'
+import { Link } from 'react-router-dom'
 import { GetHomeSearch } from '../../api/url'
 import img from '@/logo192.png'
 import HeaderLogin from './login'
@@ -57,9 +58,9 @@ class Header extends React.Component {
         </ul>);
         return (
             <div className='header-banner'>
-                <div className='header-banner-left'>
+                <Link to='/home' className='header-banner-left'>
                     <img src={img} alt='' />
-                </div>
+                </Link>
                 <div className='header-banner-right'>
                     <input type='text' value={this.state.value}
                     onChange={this.change} placeholder='请输入查询信息' />

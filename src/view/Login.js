@@ -1,9 +1,9 @@
-import { checkLogin } from '../util/index'
-import { PostLogin } from '../api/url'
+import { checkLogin, throttle } from '../util/index'
 import Header from './Header'
 import Input from '@src/components/form/Input'
-import React, { useState } from 'react'
+import React, { createRef, useEffect, useState } from 'react'
 import { useNavigate } from 'react-router-dom'
+import Tips from '@src/components/common/Tips/index'
 
 function Login (props) {
     const [username, setUsername] = useState({
@@ -11,6 +11,7 @@ function Login (props) {
         title: '姓名:',
         value: '',
     });
+    const TipsRef = createRef();
     const navigate = useNavigate();
     const [password, setPassword] = useState({
             name: 'password',
@@ -24,21 +25,33 @@ function Login (props) {
             setPassword(res);
         }
     }
-    function login () {
+    const login = throttle(() => {
         let data = {
             username: username.value,
             password: password.value,
         };
         if (checkLogin(data)) {
-            localStorage.setItem('username', data.username);
-            navigate('/home');
+            window.localStorage.setItem('username', data.username);
+            tipsShow('登陆成功', () => {
+                navigate('/home');
+            });
         } else {
-            alert('输入有误，请重新输入');
+            tipsShow('输入有误，请重新输入');
         }
+    }, 1000);
+    function tipsShow (title, fn) {
+        TipsRef.current.show(title);
+        setTimeout(() => {
+            TipsRef.current.hide();
+            fn();
+        }, 1000);
     }
-    if (localStorage.getItem('username')) {
-        navigate('/home');
-    }
+    useEffect(() => {
+        if (window.localStorage.getItem('username')) {
+            navigate('/home');
+        }
+        return () => {};
+    }, []);
     return (
         <>
         <Header></Header>
@@ -55,6 +68,7 @@ function Login (props) {
                 </div>
             </div>
         </div>
+        <Tips ref={TipsRef}></Tips>
         </>
     )
 }
