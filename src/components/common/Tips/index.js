@@ -2,7 +2,7 @@ import React, { createRef } from 'react';
 import Modal from './Tips.js'
 
 class Tips extends React.Component {
-    constructor(props) {
+    constructor (props) {
         super(props);
         this.TipsRef = createRef();
         this.state = {
@@ -10,19 +10,22 @@ class Tips extends React.Component {
             title: ''
         };
     }
+
     show = (title) => {
         this.setState({
             isShow: true,
             title,
         });
     }
-    hide= () => {
+
+    hide = () => {
         this.setState({
             isShow: false,
             title: ''
         });
     }
-    render() {
+
+    render () {
         return (
             <>
             {this.state.isShow ? (

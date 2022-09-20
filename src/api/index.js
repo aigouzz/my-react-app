@@ -1,7 +1,8 @@
 import Axios from 'axios'
 
-const baseURL = process.env.NODE_ENV === 'production' ? 
-'http://127.0.0.1:3002' : 'http://127.0.0.1:3001';
+const baseURL = process.env.NODE_ENV === 'production'
+? 'http://127.0.0.1:3002'
+: 'http://127.0.0.1:3001';
 
 let axios = Axios.create({
     baseURL,
@@ -14,7 +15,7 @@ axios.interceptors.request.use((config) => {
 });
 
 axios.interceptors.response.use((response) => {
-    if(response.status === 200) {
+    if (response.status === 200) {
         console.log(`请求成功，message:${response.data.message}`)
     }
     return response;

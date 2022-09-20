@@ -1,10 +1,10 @@
 import React from "react"
 import { FooterContext } from "../../context"
 
-function FooterLeft() {
+function FooterLeft () {
     return (
         <FooterContext.Consumer>
-            {({right}) => {
+            {({ right }) => {
                 return <div className="home-footer-link">{right}</div>
             }}
         </FooterContext.Consumer>

@@ -1,10 +1,11 @@
-import {HashRouter, Route, Routes, Navigate} from 'react-router-dom'
+import React from 'react'
+import { HashRouter, Route, Routes, Navigate } from 'react-router-dom'
 import Home from '@src/view/Home'
 import About from '@src/view/About'
 import Form from '@src/view/Form'
 import Login from '@src/view/Login';
 
-export function Routers() {
+export function Routers () {
     return (
         <HashRouter>
             <Routes>

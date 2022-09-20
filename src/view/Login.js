@@ -1,11 +1,11 @@
-import {checkLogin} from '../util/index'
-import {PostLogin} from '../api/url'
+import { checkLogin } from '../util/index'
+import { PostLogin } from '../api/url'
 import Header from './Header'
 import Input from '@src/components/form/Input'
-import { useState } from 'react'
-import {useNavigate} from 'react-router-dom'
+import React, { useState } from 'react'
+import { useNavigate } from 'react-router-dom'
 
-function Login(props) {
+function Login (props) {
     const [username, setUsername] = useState({
         name: 'username',
         title: '姓名:',
@@ -17,26 +17,26 @@ function Login(props) {
             title: '密码:',
             value: '',
         });
-    function handleChange(res) {
-        if(res.name === 'username') {
+    function handleChange (res) {
+        if (res.name === 'username') {
             setUsername(res);
         } else {
             setPassword(res);
         }
     }
-    function login() {
+    function login () {
         let data = {
             username: username.value,
             password: password.value,
         };
-        if(checkLogin(data)) {
+        if (checkLogin(data)) {
             localStorage.setItem('username', data.username);
             navigate('/home');
         } else {
             alert('输入有误，请重新输入');
         }
     }
-    if(localStorage.getItem('username')) {
+    if (localStorage.getItem('username')) {
         navigate('/home');
     }
     return (

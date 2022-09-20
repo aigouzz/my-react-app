@@ -1,7 +1,7 @@
 import React from "react"
 import { FooterContext } from "../../context"
 
-function FooterRightLink(props) {
+function FooterRightLink (props) {
     return (
         <li>
             <a href={props.url} target='_blank' rel="noreferrer">
@@ -11,10 +11,10 @@ function FooterRightLink(props) {
     )
 }
 
-function FooterRight() {
+function FooterRight () {
     return (
         <FooterContext.Consumer>
-            {({right, links}) => {
+            {({ right, links }) => {
                 return (<div className="home-footer-right">
                     <div className="home-footer-r-t">文档</div>
                     <ul>

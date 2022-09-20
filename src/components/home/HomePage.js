@@ -1,16 +1,17 @@
 import React from "react"
 import { PostHomePage } from '../../api/url'
-import {Link} from 'react-router-dom'
+import { Link } from 'react-router-dom'
 
-class HomePage extends React.Component{
-    constructor(props) {
+class HomePage extends React.Component {
+    constructor (props) {
         super(props);
         this.state = {
             list: []
         };
     }
-    componentDidMount() {
-        PostHomePage({page: 1}).then((data) => {
+
+    componentDidMount () {
+        PostHomePage({ page: 1 }).then((data) => {
             this.setState({
                 list: data.data.list
             });
@@ -18,15 +19,17 @@ class HomePage extends React.Component{
             console.log(err)
         });
     }
-    componentDidUpdate() {
+
+    componentDidUpdate () {
         console.log('home page update')
     }
-    render() {
+
+    render () {
         let content = (<ul>
             {this.state.list.map((element, index) => {
               return <li key={element.id}>
                 <Link to={element.href}>{element.title}</Link>
-              </li>  
+              </li>
             })}
         </ul>);
         return (<div className="home-page">
@@ -35,4 +38,4 @@ class HomePage extends React.Component{
     }
 }
 
-export default HomePage; 
+export default HomePage;

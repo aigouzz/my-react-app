@@ -1,9 +1,9 @@
-import { Fragment, useState } from 'react'
-import {Link} from 'react-router-dom'
+import React, { Fragment, useState } from 'react'
+import { Link } from 'react-router-dom'
 
-function HeaderLogin() {
+function HeaderLogin () {
     let [name, setName] = useState(localStorage.getItem('username'));
-    function logout() {
+    function logout () {
         localStorage.removeItem('username');
         setName(localStorage.getItem('username'));
     }

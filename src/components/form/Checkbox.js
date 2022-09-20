@@ -1,13 +1,14 @@
 import React from "react";
-import {handleChange} from '../../util/index'
+import { handleChange } from '../../util/index'
 
-class Checkbox extends React.Component{
-    constructor(props) {
+class Checkbox extends React.Component {
+    constructor (props) {
         super(props);
         this.handleChange = handleChange.bind(this);
     }
+
     handleChange
-    render() {
+    render () {
         return (
             <label>
                 <span>{this.props.list.title}</span>

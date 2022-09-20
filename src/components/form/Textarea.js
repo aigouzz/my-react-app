@@ -1,13 +1,14 @@
 import React from "react";
-import {handleChange} from '../../util/index'
+import { handleChange } from '../../util/index'
 
-class Textarea extends React.Component{
-    constructor(props) {
+class Textarea extends React.Component {
+    constructor (props) {
         super(props);
         this.handleChange = handleChange.bind(this);
         // console.log(this.findDOMNode())
     }
-    render() {
+
+    render () {
         return (
             <label>
                 <span>{this.props.list.title}</span>

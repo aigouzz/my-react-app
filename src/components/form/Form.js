@@ -3,11 +3,11 @@ import Input from './Input'
 import Checkbox from './Checkbox'
 import Textarea from './Textarea'
 import Tips from '../common/Tips/index'
-import { handleChange, checkForm, throttle} from '../../util/index'
-import {PostFormUpload, PostImageUpload} from '@src/api/url'
+import { handleChange, checkForm, throttle } from '../../util/index'
+import { PostFormUpload, PostImageUpload } from '@src/api/url'
 
-class Form extends React.Component{
-    constructor(props) {
+class Form extends React.Component {
+    constructor (props) {
         super(props);
         this.state = {
             user: {
@@ -32,15 +32,17 @@ class Form extends React.Component{
         this.uploadChange = this.uploadChange.bind(this);
         this.onValueChange = this.onValueChange.bind(this);
     }
-    onValueChange(data) {
+
+    onValueChange (data) {
         this.setState({
             [data.name]: data
         });
     }
-    submitWrap=throttle(this.submit, 1000)
-    submit(e) {
+
+    submitWrap = throttle(this.submit, 1000)
+    submit (e) {
         e.preventDefault();
-        if(checkForm(this.state)) {
+        if (checkForm(this.state)) {
             const data = {
                 username: this.state.user.value,
                 opinion: this.state.opinion.value,
@@ -56,18 +58,21 @@ class Form extends React.Component{
             this.onShow('输入有失误，请重新输入');
         }
     }
-    onShow(title) {
+
+    onShow (title) {
         this.TipsRef.current.show(title);
         setTimeout(() => {
             this.onClose();
         }, 1000);
     }
+
     onClose = () => {
         this.TipsRef.current.hide();
     }
-    uploadChange(e) {
+
+    uploadChange (e) {
         let file = e.target.files[0];
-        if(!!file) {
+        if (!!file) {
             let reader = new FileReader();
             reader.readAsDataURL(file, 'utf-8');
             reader.onload = () => {
@@ -78,10 +83,11 @@ class Form extends React.Component{
             }
         }
     }
-    upload=(e) => {
+
+    upload = (e) => {
         e.preventDefault();
         let uploadImage = this.state.uploadImage;
-        if(uploadImage) {
+        if (uploadImage) {
             PostImageUpload({
                 image: uploadImage
             }).then((data) => {
@@ -98,7 +104,8 @@ class Form extends React.Component{
             this.onShow('还没有上传文件哦');
         }
     }
-    render() {
+
+    render () {
         return (
             <>
             <div className="home-form">

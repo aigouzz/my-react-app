@@ -1,6 +1,7 @@
+import React from "react"
 import Header from "./Header"
 
-function About() {
+function About () {
     return (
         <>
         <Header></Header>

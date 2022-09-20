@@ -1,7 +1,8 @@
+import React from 'react'
 import Form from '@src/components/form/Form'
 import Header from './Header'
 
-function FormComp() {
+function FormComp () {
     return (<>
         <Header></Header>
         <Form></Form>
