@@ -1,21 +1,51 @@
 import React, { useState } from "react"
 import Input from '../form/Input'
+import { AboutMiddleList } from "./common/MiddleList";
 
 function AboutMiddle () {
-    let [inputText, setInputText] = useState('');
+    let [midList, setMidList] = useState([]);
     let [list, setList] = useState({
-        title: '修改',
+        title: '任务',
         value: '',
-        name: 'change'
+        name: 'addMore'
     });
     let changeInput = (data) => {
         setList(data);
-        setInputText(data.value);
     };
+    let deleteItem = (id) => {
+        let originArr = [...midList];
+        let index = null;
+        for (let i in originArr) {
+            if (originArr[i].id === id) {
+                index = i;
+                break;
+            }
+        }
+        originArr.splice(index, 1);
+        setMidList(originArr);
+    }
+    let addNew = () => {
+        if (list.value) {
+            let originArr = [...midList];
+            originArr.push({
+                id: (+new Date()).toString(),
+                title: list.value
+            });
+            setMidList(originArr);
+            setList({
+                title: '任务',
+                value: '',
+                name: 'addMore'
+            });
+        }
+    }
     return (
         <div className="about-mid">
-            <span>效果：{inputText}</span>
+            <ul>
+                <AboutMiddleList list={midList} onDelete={deleteItem}></AboutMiddleList>
+            </ul>
             <Input list={list} onChange={changeInput} />
+            <button onClick={addNew}>添加</button>
         </div>
     );
 }

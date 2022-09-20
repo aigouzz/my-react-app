@@ -51,12 +51,32 @@
                         width: 100%
                         height: 170px
 .about-mid
-    display: flex
-    > span    
-        flex: 1
+    width: 1260px
+    margin: 0 auto
+    ul    
+        li  
+            text-align: center
+            word-break: break-word
+            word-wrap: break
+            height: 40px
+            span
+                color: $about_middle_text
+            i
+                font-style: normal
+                cursor: pointer
+                display: inline-block
+                width: 40px
+                color: $color1
+    label input
+        width: 160px
+        height: 40px
+        border: 1px solid $color
+    > button
         display: inline-block
-        color: $about_middle_text
-        word-break: break-word
-        word-wrap: break
-    label
-        flex: 4
+        width: 80px
+        height: 40px
+        text-align: center
+        border: 1px solid $bgColor
+        cursor: pointer
+        &:hover
+            background: $color
