@@ -4,7 +4,6 @@
 @import url('./login/index.scss');
 @import url('./about/index.scss');
 @import url('./footer/index.scss');
-@import './_common.scss';
 
 body {
   margin: 0;
@@ -45,14 +44,15 @@ code {
     line-height: 40px;
     transform: translate(-50%, 0);
     z-index: 1000;
-    background: var(--fill-2);
-    border: 1px solid var(--text-2);
+    background: var(--fill-3);
+    border: 1px solid var(--text-3);
     color: var(--text-1);
     text-align: center;
     .modal-tips-text{
       white-space: nowrap;
       overflow: hidden;
       text-overflow: ellipsis;
+    }
     i{
       position: absolute;
       top: 0;
@@ -63,7 +63,6 @@ code {
       text-align: center;
       font-style: normal;
     }
-  }
 }
 
 
