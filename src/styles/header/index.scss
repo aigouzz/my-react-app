@@ -1,0 +1,64 @@
+@import '../_common.scss';
+
+.header-banner{
+    display: flex;
+    justify-content: flex-start;
+    position: relative;
+    max-width: 1260px;
+    .header-banner-left{
+        flex: 3;
+        img{
+            width: 40px;
+            height: 40px;
+            animation: round-infinite 3s linear infinite;
+        }
+    }
+    .header-banner-right{
+        flex: 3;
+        line-height: 30px;
+        position: relative;
+        text-align: left;
+        input{
+            border: 1px solid var(--common-1);
+            width: 160px;
+            height: 30px;
+            &:focus{
+                outline: none;
+                border: 1px solid var(--text-2);
+            }
+        }
+        button{
+            height: 30px;
+            width: 100px;
+            background: $bgColor1;
+            color: $color1;
+            border: 1px solid var(--text-2);
+            &:active{
+                border: 1px solod var(--text-4);
+            }
+        }
+    }
+    .header-login{
+        flex: 1;}
+    .header-banner-drop{
+        position: absolute;
+        top: 32px;
+        left: 0%;
+        width: 160px;
+        z-index: 10;
+        border: 1px solid var(--text-2);
+        background: var(--bg-1);
+        li{
+            border-bottom: 1px solid var(--text-2);
+            &:nth-last-child(1){
+                border-bottom: none;
+            }
+            &:hover{
+                cursor: pointer;
+                background: var(--text-4);}
+            a{
+                display: block;
+            }
+        }
+    }
+}

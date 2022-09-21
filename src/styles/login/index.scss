@@ -1,0 +1,25 @@
+@import '../_common.scss';
+
+.login  {
+    width: 1260px;
+    margin: 0 auto;
+    padding: 100px 0 60px 0;
+    .login-inner-text{
+        label input{
+            width: 160px;
+            height: 40px;
+            border: 1px solid var(--text-2);
+        }
+        button{
+            display: inline-block;
+            padding: 0 12px;
+            height: 40px;
+            border: 1px solid var(--text-2);
+            &:hover{
+                background: var(--text-4);
+            }
+        }
+    }
+}
+        
+    

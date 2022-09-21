@@ -3,6 +3,7 @@ import Footer from './view/Footer'
 import { FooterContext } from './context/index'
 import { FooterData } from './api/defaultData'
 import { Routers } from './router/Route'
+// import { cloneDeep } from 'lodash'
 
 function App () {
   return (

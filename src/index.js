@@ -2,9 +2,11 @@ import React from 'react'
 import ReactDOM from 'react-dom/client'
 import App from './App'
 import reportWebVitals from './reportWebVitals'
-import './styles/index.sass'
+import './styles/index.scss'
+import { initTheme } from './util/initCss'
 
 const root = ReactDOM.createRoot(document.getElementById('root'))
+initTheme(true);
 root.render(
   // <React.StrictMode>
     <App />

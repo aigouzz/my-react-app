@@ -91,7 +91,6 @@ class Form extends React.Component {
             PostImageUpload({
                 image: uploadImage
             }).then((data) => {
-                console.log(data)
                 this.onShow(data.data.message);
             }, (err) => {
                 this.onShow(err);
