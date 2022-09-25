@@ -4,6 +4,7 @@ import Home from '@src/view/Home'
 import About from '@src/view/About'
 import Form from '@src/view/Form'
 import Login from '@src/view/Login';
+import EditPage from '@src/view/EditPage'
 
 export function Routers () {
     return (
@@ -13,6 +14,7 @@ export function Routers () {
                 <Route exact path='/about' element={<About></About>}></Route>
                 <Route exact path='/form' element={<Form></Form>}></Route>
                 <Route exact path='/login' element={<Login></Login>}></Route>
+                <Route exact path='/edit' element={<EditPage></EditPage>}></Route>
                 <Route path='*' element={<Navigate to='/home'></Navigate>}></Route>
             </Routes>
         </HashRouter>

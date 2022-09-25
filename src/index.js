@@ -4,12 +4,20 @@ import App from './App'
 import reportWebVitals from './reportWebVitals'
 import './styles/index.scss'
 import { initTheme } from './util/initCss'
+import { createStore } from 'redux'
+import { Provider } from 'react-redux'
+import initialState from './redux/initialState'
+import rootReducer from './redux/reducers/index'
 
 const root = ReactDOM.createRoot(document.getElementById('root'))
+
+const store = createStore(rootReducer, initialState);
 initTheme(true);
 root.render(
   // <React.StrictMode>
+  <Provider store={store}>
     <App />
+  </Provider>
   // </React.StrictMode>
 )
 
