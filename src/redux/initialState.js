@@ -19,5 +19,10 @@ export default {
           }
     ],
     visibilityFilter: VisibilityFilters.SHOW_ALl,
-    shops: [],
+    shops: [
+      {
+        text: '小米手机11',
+        id: 1
+      }
+    ],
 }
