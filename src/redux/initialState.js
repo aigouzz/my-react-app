@@ -18,5 +18,6 @@ export default {
             completed: false
           }
     ],
-    filter: VisibilityFilters.SHOW_ALl
+    visibilityFilter: VisibilityFilters.SHOW_ALl,
+    shops: [],
 }

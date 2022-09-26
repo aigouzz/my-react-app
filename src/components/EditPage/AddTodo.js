@@ -2,7 +2,7 @@ import React from "react"
 import { connect } from "react-redux"
 import { addTodo } from '../../redux/actions/actions'
 
-function AddTodo ({ dispatch }) {
+function AddTodo (props) {
     let input;
     return (
         <>
@@ -11,7 +11,7 @@ function AddTodo ({ dispatch }) {
             if (!input.value.trim()) {
                 return;
             }
-            dispatch(addTodo(input.value));
+            props.dispatch(addTodo(input.value, props.todos.length + 1));
             input.value = '';
         }}>
             <input ref={node => {
@@ -22,4 +22,9 @@ function AddTodo ({ dispatch }) {
         </>
     )
 }
-export default connect()(AddTodo);
+const mapStateToProps = state => {
+    return {
+        todos: state.todos
+    }
+}
+export default connect(mapStateToProps)(AddTodo);

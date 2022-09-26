@@ -3,6 +3,7 @@ import { connect } from "react-redux"
 import AddTodo from '../components/EditPage/AddTodo'
 import VisibleTodoList from '../components/EditPage/VisibleTodoList'
 import TodoFooter from '../components/EditPage/TodoFooter'
+import Shop from '../components/EditPage/Shop'
 
 function EditPage () {
     return (
@@ -10,6 +11,7 @@ function EditPage () {
         <AddTodo></AddTodo>
         <VisibleTodoList ></VisibleTodoList>
         <TodoFooter ></TodoFooter>
+        <Shop></Shop>
         </>
     );
 }
