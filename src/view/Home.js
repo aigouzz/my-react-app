@@ -2,7 +2,7 @@ import * as React from 'react'
 import HomeMiddle from '../components/home/HomeMiddle'
 import Form from '../components/form/Form'
 import Header from './Header'
-const HomePage = React.lazy(() => import('../components/home/HomePage'))
+import HomePage from '@src/components/home/HomePage'
 
 class Home extends React.Component {
     render () {

@@ -1,13 +1,22 @@
-import React from 'react'
+import React, { Suspense } from 'react'
 import { HashRouter, Route, Routes, Navigate } from 'react-router-dom'
 import Home from '@src/view/Home'
-import About from '@src/view/About'
-import Form from '@src/view/Form'
-import Login from '@src/view/Login';
-import EditPage from '@src/view/EditPage'
+const About = React.lazy(() => import(
+    /* webpackChunkName: 'about' */
+    '@src/view/About'))
+const Form = React.lazy(() => import(
+    /* webpackChunkName: 'about' */
+    '@src/view/Form'))
+const Login = React.lazy(() => import(
+    /* webpackChunkName: 'about' */
+    '@src/view/Login'))
+const EditPage = React.lazy(() => import(
+    /* webpackChunkName: 'about' */
+    '@src/view/EditPage'))
 
 export function Routers () {
     return (
+        <Suspense fallback={<div>...loading</div>}>
         <HashRouter>
             <Routes>
                 <Route exact path='/home' element={<Home></Home>}></Route>
@@ -18,5 +27,6 @@ export function Routers () {
                 <Route path='*' element={<Navigate to='/home'></Navigate>}></Route>
             </Routes>
         </HashRouter>
+        </Suspense>
     );
 }
