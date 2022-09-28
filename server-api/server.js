@@ -18,7 +18,7 @@ app.all('*', (req, res, next) => {
     res.header('Access-Control-Allow-Headers', 'content-type, with-credentials');
     res.header('Access-Control-Allow-Methods', 'PUT, GET, POST, OPTIONS, DELETE');
     res.header('Access-Control-Allow-Credentials', true);
-    if(req.method.toLowerCase() === 'options') {
+    if (req.method.toLowerCase() === 'options') {
         res.header('Access-Control-Max-Age', '3000');
         res.sendStatus(200);
     } else {
@@ -50,7 +50,7 @@ app.get('/home/search', (req, res) => {
             title: '冻结-林俊杰'
         },
         {
-            id: 2006, 
+            id: 2006,
             title: '太迟-二虎'
         },
     ];
@@ -112,7 +112,7 @@ app.post('/home/form/upload', (req, res) => {
 });
 
 app.listen(port, (err) => {
-    if(err) {
+    if (err) {
         console.log(err)
     } else {
         console.log(`启动成功，地址:http://127.0.0.1:${port}`)
