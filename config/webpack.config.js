@@ -26,6 +26,7 @@ const ForkTsCheckerWebpackPlugin =
     : require('react-dev-utils/ForkTsCheckerWebpackPlugin');
 const ReactRefreshWebpackPlugin = require('@pmmmwh/react-refresh-webpack-plugin');
 const WebpackBundleAnalyzer = require('webpack-bundle-analyzer').BundleAnalyzerPlugin;
+const ProgressPlugin = webpack.ProgressPlugin;
 
 const createEnvironmentHash = require('./webpack/persistentCache/createEnvironmentHash');
 
@@ -294,6 +295,19 @@ module.exports = function (webpackEnv) {
         // This is only used in production mode
         new CssMinimizerPlugin(),
       ],
+      splitChunks: {
+        chunks: 'initial',
+        cacheGroups: {
+          vendor: {
+            test: /[\\/]node_modules[\\/]/,
+            name: 'vendors'
+          },
+          react_dom: {
+            test: /[\\/]node_modules[\\/]react-dom.*/,
+            name: 'react_dom'
+          }
+        }
+      }
     },
     resolve: {
       // This allows you to set a fallback for where webpack should look for modules.
@@ -789,7 +803,10 @@ module.exports = function (webpackEnv) {
             },
           },
         }),
-      isEnvProduction && new WebpackBundleAnalyzer(),
+      // isEnvProduction && new WebpackBundleAnalyzer(),
+      new ProgressPlugin((percent, message, ...args) => {
+        console.log(percent, message + '//', ...args);
+      })
     ].filter(Boolean),
     // Turn off performance processing because we utilize
     // our own hints via the FileSizeReporter

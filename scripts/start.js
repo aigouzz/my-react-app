@@ -114,11 +114,11 @@ checkBrowsers(paths.appPath, isInteractive)
     };
     const devServer = new WebpackDevServer(serverConfig, compiler);
     // Launch WebpackDevServer.
+
     devServer.startCallback(() => {
       if (isInteractive) {
-        clearConsole();
+        // clearConsole();
       }
-
       if (env.raw.FAST_REFRESH && semver.lt(react.version, '16.10.0')) {
         console.log(
           chalk.yellow(
