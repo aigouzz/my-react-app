@@ -21,6 +21,8 @@ module.exports = {
     'comma-dangle': 'off',
     'eol-last': 'off',
     'multiline-ternary': 'off',
-    'react/prop-types': 'off'
+    'react/prop-types': 'off',
+    'space-before-function-paren': 0,
+    'no-trailing-spaces': 0
   }
 };

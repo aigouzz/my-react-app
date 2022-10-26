@@ -1,19 +1,26 @@
-import React from 'react'
-import Footer from './view/Footer'
-import { FooterContext } from './context/index'
-import { FooterData } from './api/defaultData'
-import { Routers } from './router/Route'
-// import { cloneDeep } from 'lodash'
+import React, { memo } from 'react';
+import { Provider } from 'react-redux';
 
-function App () {
+import { HashRouter } from 'react-router-dom';
+import store from './store';
+import { BackTop } from 'antd';
+import JMAppHeader from '@components/app-header';
+import JMAppFooter from '@components/app-footer';
+import JMAppPlayerBar from './pages/player/app-player-bar';
+import AppWrapper from './pages/app';
+
+export default memo(function App () {
   return (
-    <FooterContext.Provider value={FooterData}>
-      <div className='App'>
-        <Routers></Routers>
-        <Footer></Footer>
-      </div>
-    </FooterContext.Provider>
-  )
-}
-
-export default App
+    <Provider store={store}>
+      <HashRouter>
+        <JMAppHeader />
+        {/* Router路由映射 */}
+        <AppWrapper />
+        <JMAppFooter />
+        <JMAppPlayerBar />
+        {/* 返回顶部 */}
+        <BackTop />
+      </HashRouter>
+    </Provider>
+  );
+});
